@@ -1,0 +1,19 @@
+<xml xmlns="https://developers.google.com/blockly/xml"><variables></variables><block type="bluetooth_on_connected" id="ZN+smcx@l7S7kkYmj7}." x="450" y="52"><statement name="HANDLER"><block type="device_show_leds" id="BvTFQ%?e`N2#Is9KPTzD"><field name="LEDS">`
+        # # . # # 
+        # # . # # 
+        . . # . . 
+        # . . . # 
+        . # # # .
+        `</field></block></statement></block><block type="bluetooth_on_disconnected" id="OAW:S{PaZ_/HlR0o1Tc%" x="829" y="53"><statement name="HANDLER"><block type="device_show_leds" id="X/e9e.@UTlw(44,+SLqu"><field name="LEDS">`
+        # # . # # 
+        # # . # # 
+        . . # . . 
+        . # # # . 
+        # . . . #
+        `</field></block></statement></block><block type="pxt-on-start" id="Mf=NVy|_`BIWA#cSSn#$" x="53" y="155"><statement name="HANDLER"><block type="device_show_leds" id="51{Tx}c|RY4_Xtc+:n)`"><field name="LEDS">`
+        . . . . # 
+        . . . # . 
+        # . # . . 
+        . # . . . 
+        . . . . .
+        `</field><next><block type="motorbit_motor_dual" id="hA5|m.G%qQ:Z)dlN_V1B"><field name="motor1">motorbit.Motors.M1</field><field name="motor2">motorbit.Motors.M2</field><value name="speed1"><shadow type="math_number_minmax" id="ED17nejPYyNVK]$5*/W$"><mutation min="-255" max="255" label="Speed1" precision="0"></mutation><field name="SLIDER">150</field></shadow></value><value name="speed2"><shadow type="math_number_minmax" id="`4oNTM$.;!4#,m%3X623"><mutation min="-255" max="255" label="Speed2" precision="0"></mutation><field name="SLIDER">150</field></shadow></value><next><block type="device_pause" id="FU,{vvaa]f!V,Hhi-T_B"><value name="pause"><shadow type="timePicker" id="}x?OFL=].liiD$Uq7uF0"><field name="ms">2000</field></shadow></value><next><block type="motorbit_motor_dual" id="e^dfE=C6XD[XpnMYdnSd"><field name="motor1">motorbit.Motors.M3</field><field name="motor2">motorbit.Motors.M4</field><value name="speed1"><shadow type="math_number_minmax" id="]RMrr)uzA.c@cVfi,^tC"><mutation min="-255" max="255" label="Speed1" precision="0"></mutation><field name="SLIDER">150</field></shadow></value><value name="speed2"><shadow type="math_number_minmax" id="?KKEhdDqOu24LX222IZ%"><mutation min="-255" max="255" label="Speed2" precision="0"></mutation><field name="SLIDER">150</field></shadow></value><next><block type="device_pause" id="kvp.QZBDMx|I_eUoQLd="><value name="pause"><shadow type="timePicker" id="@q_6OYFuC7xz;;nm@3Dd"><field name="ms">2000</field></shadow></value><next><block type="motorbit_stop_all" id="cgYy#E@i=koxo)83*ygQ"></block></next></block></next></block></next></block></next></block></next></block></statement></block></xml>
