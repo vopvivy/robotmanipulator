@@ -44,6 +44,8 @@ control.onEvent(EventBusSource.MES_DPAD_CONTROLLER_ID, EventBusValue.MICROBIT_EV
             . # # # .
             . . # . .
             `)
+        motorbit.MotorRunDual(motorbit.Motors.M1, -150, motorbit.Motors.M2, -150)
+        motorbit.MotorRunDual(motorbit.Motors.M3, -150, motorbit.Motors.M4, -150)
     } else if (control.eventValue() == EventBusValue.MES_DPAD_BUTTON_2_UP) {
         basic.showLeds(`
             . # # # .
@@ -52,6 +54,7 @@ control.onEvent(EventBusSource.MES_DPAD_CONTROLLER_ID, EventBusValue.MICROBIT_EV
             . . . # .
             . # # # .
             `)
+        motorbit.MotorStopAll()
     } else if (control.eventValue() == EventBusValue.MES_DPAD_BUTTON_3_DOWN) {
         basic.showLeds(`
             . . # . .
@@ -60,6 +63,8 @@ control.onEvent(EventBusSource.MES_DPAD_CONTROLLER_ID, EventBusValue.MICROBIT_EV
             . # . . .
             . . # . .
             `)
+        motorbit.MotorRunDual(motorbit.Motors.M1, 0, motorbit.Motors.M2, 150)
+        motorbit.MotorRunDual(motorbit.Motors.M3, 0, motorbit.Motors.M4, 150)
     } else if (control.eventValue() == EventBusValue.MES_DPAD_BUTTON_3_UP) {
         basic.showLeds(`
             . # # # .
@@ -68,19 +73,29 @@ control.onEvent(EventBusSource.MES_DPAD_CONTROLLER_ID, EventBusValue.MICROBIT_EV
             . . . # .
             . # # # .
             `)
+        motorbit.MotorStopAll()
     } else if (control.eventValue() == EventBusValue.MES_DPAD_BUTTON_4_DOWN) {
-    	
-    } else {
-    	
+        basic.showLeds(`
+            . . # . .
+            . . . # .
+            # # # # #
+            . . . # .
+            . . # . .
+            `)
+        motorbit.MotorRunDual(motorbit.Motors.M1, 150, motorbit.Motors.M2, 0)
+        motorbit.MotorRunDual(motorbit.Motors.M3, 150, motorbit.Motors.M4, 0)
+    } else if (control.eventValue() == EventBusValue.MES_DPAD_BUTTON_4_UP) {
+        basic.showLeds(`
+            . # # # .
+            . # . . .
+            . . # . .
+            . . . # .
+            . # # # .
+            `)
+        motorbit.MotorStopAll()
     }
 })
 motorbit.MotorStopAll()
 music._playDefaultBackground(music.builtInPlayableMelody(Melodies.PowerUp), music.PlaybackMode.InBackground)
-basic.showLeds(`
-    . . . . #
-    . . . # .
-    # . # . .
-    . # . . .
-    . . . . .
-    `)
+basic.showIcon(IconNames.Yes)
 basic.pause(2000)
