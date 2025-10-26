@@ -1,3 +1,47 @@
+function car_back () {
+    basic.showLeds(`
+        . . # . .
+        . . # . .
+        # . # . #
+        . # # # .
+        . . # . .
+        `)
+    motorbit.MotorRunDual(motorbit.Motors.M1, -150, motorbit.Motors.M3, -150)
+    motorbit.MotorRunDual(motorbit.Motors.M2, -150, motorbit.Motors.M4, -150)
+}
+function car_move_RF () {
+    basic.showLeds(`
+        . # # # #
+        . . . # #
+        . . # . #
+        . # . . #
+        # . . . .
+        `)
+    motorbit.MotorRunDual(motorbit.Motors.M1, 150, motorbit.Motors.M3, 0)
+    motorbit.MotorRunDual(motorbit.Motors.M2, 0, motorbit.Motors.M4, 150)
+}
+function drift_left () {
+    basic.showLeds(`
+        . . # . #
+        . # . # .
+        # # # # #
+        . # . # .
+        . . # . #
+        `)
+    motorbit.MotorRunDual(motorbit.Motors.M1, 0, motorbit.Motors.M3, 0)
+    motorbit.MotorRunDual(motorbit.Motors.M2, 150, motorbit.Motors.M4, -150)
+}
+function car_left () {
+    basic.showLeds(`
+        . . # # .
+        . # . . #
+        # # # . #
+        . # . . #
+        . . . # .
+        `)
+    motorbit.MotorRunDual(motorbit.Motors.M1, -150, motorbit.Motors.M3, 150)
+    motorbit.MotorRunDual(motorbit.Motors.M2, -150, motorbit.Motors.M4, 150)
+}
 bluetooth.onBluetoothConnected(function () {
     basic.showLeds(`
         # # . # #
@@ -6,7 +50,119 @@ bluetooth.onBluetoothConnected(function () {
         # . . . #
         . # # # .
         `)
+    connect_flag = 1
+    while (connect_flag == 1) {
+        ble_val = bluetooth.uartReadUntil(serial.delimiters(Delimiters.Hash))
+        serial.writeString(ble_val)
+        serial.writeLine("")
+        if (ble_val == "a") {
+            car_forward()
+        } else if (ble_val == "b") {
+            car_left()
+        } else if (ble_val == "c") {
+            car_back()
+        } else if (ble_val == "d") {
+            car_right()
+        } else if (ble_val == "k") {
+            car_left_move()
+        } else if (ble_val == "h") {
+            car_right_move()
+        } else if (ble_val == "g") {
+            car_move_RF()
+        } else if (ble_val == "i") {
+            car_move_RB()
+        } else if (ble_val == "j") {
+            car_move_LB()
+        } else if (ble_val == "l") {
+            car_move_LF()
+        } else if (ble_val == "s") {
+            basic.showLeds(`
+                . # # # .
+                . # . . .
+                . . # . .
+                . . . # .
+                . # # # .
+                `)
+            motorbit.MotorStopAll()
+        } else if (ble_val == "t") {
+        	
+        } else if (ble_val == "u") {
+        	
+        } else if (ble_val == "e") {
+            drift_left()
+        } else if (ble_val == "f") {
+            drift_right()
+        } else if (ble_val == "m") {
+            if (color_num < 9) {
+                color_num = color_num + 1
+            }
+            showcolor()
+        } else if (ble_val == "n") {
+            if (color_num > 0) {
+                color_num = color_num - 1
+            }
+            showcolor()
+        } else if (ble_val == "o") {
+        	
+        } else if (ble_val == "v") {
+            ble_val = bluetooth.uartReadUntil(serial.delimiters(Delimiters.Hash))
+            basic.pause(100)
+            speed_LF = parseFloat(ble_val)
+            basic.pause(100)
+            serial.writeNumber(speed_LF)
+            serial.writeLine("")
+        } else if (ble_val == "w") {
+            ble_val = bluetooth.uartReadUntil(serial.delimiters(Delimiters.Hash))
+            basic.pause(100)
+            speed_LB = parseFloat(ble_val)
+            basic.pause(100)
+            serial.writeNumber(speed_LB)
+            serial.writeLine("")
+        } else if (ble_val == "x") {
+            ble_val = bluetooth.uartReadUntil(serial.delimiters(Delimiters.Hash))
+            basic.pause(100)
+            speed_RF = parseFloat(ble_val)
+            basic.pause(100)
+            serial.writeNumber(speed_RF)
+            serial.writeLine("")
+        } else if (ble_val == "y") {
+            ble_val = bluetooth.uartReadUntil(serial.delimiters(Delimiters.Hash))
+            basic.pause(100)
+            speed_RB = parseFloat(ble_val)
+            basic.pause(100)
+            serial.writeNumber(speed_RB)
+            serial.writeLine("")
+        }
+    }
 })
+function car_move_LB () {
+    basic.showLeds(`
+        . . . . #
+        # . . # .
+        # . # . .
+        # # . . .
+        # # # # .
+        `)
+    motorbit.MotorRunDual(motorbit.Motors.M1, 0, motorbit.Motors.M3, -150)
+    motorbit.MotorRunDual(motorbit.Motors.M2, -150, motorbit.Motors.M4, 0)
+}
+function showcolor () {
+    basic.showIcon(IconNames.Chessboard)
+}
+function car_move_RB () {
+    basic.showLeds(`
+        # . . . .
+        . # . . #
+        . . # . #
+        . . . # #
+        . # # # #
+        `)
+    motorbit.MotorRunDual(motorbit.Motors.M1, -150, motorbit.Motors.M3, 0)
+    motorbit.MotorRunDual(motorbit.Motors.M2, 0, motorbit.Motors.M4, -150)
+}
+function tracking () {
+    basic.showIcon(IconNames.TShirt)
+}
 bluetooth.onBluetoothDisconnected(function () {
     basic.showLeds(`
         # # . # #
@@ -16,86 +172,105 @@ bluetooth.onBluetoothDisconnected(function () {
         # . . . #
         `)
 })
-control.onEvent(EventBusSource.MES_DPAD_CONTROLLER_ID, EventBusValue.MICROBIT_EVT_ANY, function () {
-    if (control.eventValue() == EventBusValue.MES_DPAD_BUTTON_1_DOWN) {
-        basic.showLeds(`
-            . . # . .
-            . # # # .
-            # . # . #
-            . . # . .
-            . . # . .
-            `)
-        motorbit.MotorRunDual(motorbit.Motors.M1, 150, motorbit.Motors.M2, 150)
-        motorbit.MotorRunDual(motorbit.Motors.M3, 150, motorbit.Motors.M4, 150)
-    } else if (control.eventValue() == EventBusValue.MES_DPAD_BUTTON_1_UP) {
-        basic.showLeds(`
-            . # # # .
-            . # . . .
-            . . # . .
-            . . . # .
-            . # # # .
-            `)
-        motorbit.MotorStopAll()
-    } else if (control.eventValue() == EventBusValue.MES_DPAD_BUTTON_2_DOWN) {
-        basic.showLeds(`
-            . . # . .
-            . . # . .
-            # . # . #
-            . # # # .
-            . . # . .
-            `)
-        motorbit.MotorRunDual(motorbit.Motors.M1, -150, motorbit.Motors.M2, -150)
-        motorbit.MotorRunDual(motorbit.Motors.M3, -150, motorbit.Motors.M4, -150)
-    } else if (control.eventValue() == EventBusValue.MES_DPAD_BUTTON_2_UP) {
-        basic.showLeds(`
-            . # # # .
-            . # . . .
-            . . # . .
-            . . . # .
-            . # # # .
-            `)
-        motorbit.MotorStopAll()
-    } else if (control.eventValue() == EventBusValue.MES_DPAD_BUTTON_3_DOWN) {
-        basic.showLeds(`
-            . . # . .
-            . # . . .
-            # # # # #
-            . # . . .
-            . . # . .
-            `)
-        motorbit.MotorRunDual(motorbit.Motors.M1, 0, motorbit.Motors.M2, 150)
-        motorbit.MotorRunDual(motorbit.Motors.M3, 0, motorbit.Motors.M4, 150)
-    } else if (control.eventValue() == EventBusValue.MES_DPAD_BUTTON_3_UP) {
-        basic.showLeds(`
-            . # # # .
-            . # . . .
-            . . # . .
-            . . . # .
-            . # # # .
-            `)
-        motorbit.MotorStopAll()
-    } else if (control.eventValue() == EventBusValue.MES_DPAD_BUTTON_4_DOWN) {
-        basic.showLeds(`
-            . . # . .
-            . . . # .
-            # # # # #
-            . . . # .
-            . . # . .
-            `)
-        motorbit.MotorRunDual(motorbit.Motors.M1, 150, motorbit.Motors.M2, 0)
-        motorbit.MotorRunDual(motorbit.Motors.M3, 150, motorbit.Motors.M4, 0)
-    } else if (control.eventValue() == EventBusValue.MES_DPAD_BUTTON_4_UP) {
-        basic.showLeds(`
-            . # # # .
-            . # . . .
-            . . # . .
-            . . . # .
-            . # # # .
-            `)
+function car_right_move () {
+    basic.showLeds(`
+        . . # . .
+        . . . # .
+        # # # # #
+        . . . # .
+        . . # . .
+        `)
+    motorbit.MotorRunDual(motorbit.Motors.M1, 150, motorbit.Motors.M3, -150)
+    motorbit.MotorRunDual(motorbit.Motors.M2, -150, motorbit.Motors.M4, 150)
+}
+function drift_right () {
+    basic.showLeds(`
+        # . # . .
+        . # . # .
+        # # # # #
+        . # . # .
+        # . # . .
+        `)
+    motorbit.MotorRunDual(motorbit.Motors.M1, 0, motorbit.Motors.M3, 0)
+    motorbit.MotorRunDual(motorbit.Motors.M2, -150, motorbit.Motors.M4, 150)
+}
+function follow () {
+    basic.showIcon(IconNames.House)
+}
+function car_move_LF () {
+    basic.showLeds(`
+        # # # # .
+        # # . . .
+        # . # . .
+        # . . # .
+        . . . . #
+        `)
+    motorbit.MotorRunDual(motorbit.Motors.M1, 0, motorbit.Motors.M3, 150)
+    motorbit.MotorRunDual(motorbit.Motors.M2, 150, motorbit.Motors.M4, 0)
+}
+function avoid () {
+    basic.showIcon(IconNames.SmallHeart)
+}
+function car_forward () {
+    basic.showLeds(`
+        . . # . .
+        . # # # .
+        # . # . #
+        . . # . .
+        . . # . .
+        `)
+    motorbit.MotorRunDual(motorbit.Motors.M1, 150, motorbit.Motors.M3, 150)
+    motorbit.MotorRunDual(motorbit.Motors.M2, 150, motorbit.Motors.M4, 150)
+}
+function car_left_move () {
+    basic.showLeds(`
+        . . # . .
+        . # . . .
+        # # # # #
+        . # . . .
+        . . # . .
+        `)
+    motorbit.MotorRunDual(motorbit.Motors.M1, -150, motorbit.Motors.M3, 150)
+    motorbit.MotorRunDual(motorbit.Motors.M2, 150, motorbit.Motors.M4, -150)
+}
+function car_right () {
+    basic.showLeds(`
+        . # # . .
+        # . . # .
+        # . # # #
+        # . . # .
+        . # . . .
+        `)
+    motorbit.MotorRunDual(motorbit.Motors.M1, 150, motorbit.Motors.M3, -150)
+    motorbit.MotorRunDual(motorbit.Motors.M2, 150, motorbit.Motors.M4, -150)
+}
+let ble_val = ""
+let connect_flag = 0
+let speed_RF = 0
+let speed_RB = 0
+let speed_LF = 0
+let speed_LB = 0
+let color_num = 0
+serial.redirectToUSB()
+motorbit.MotorStopAll()
+basic.pause(2000)
+music._playDefaultBackground(music.builtInPlayableMelody(Melodies.PowerUp), music.PlaybackMode.UntilDone)
+basic.pause(2000)
+basic.showIcon(IconNames.House)
+color_num = 0
+speed_LB = 75
+speed_LF = 75
+speed_RB = 75
+speed_RF = 75
+basic.pause(2000)
+basic.forever(function () {
+    if (ble_val == "p") {
+        tracking()
+    } else if (ble_val == "q") {
+        follow()
+    } else if (ble_val == "r") {
+        avoid()
+    } else if (ble_val == "s") {
         motorbit.MotorStopAll()
     }
 })
-motorbit.MotorStopAll()
-music._playDefaultBackground(music.builtInPlayableMelody(Melodies.PowerUp), music.PlaybackMode.UntilDone)
-basic.showIcon(IconNames.Yes)
-basic.pause(2000)

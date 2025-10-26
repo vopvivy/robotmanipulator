@@ -99,14 +99,8 @@ control.on_event(EventBusSource.MES_DPAD_CONTROLLER_ID,
     EventBusValue.MICROBIT_EVT_ANY,
     on_mes_dpad_controller_id_microbit_evt)
 
-motorbit.motor_stop_all()
 music._play_default_background(music.built_in_playable_melody(Melodies.POWER_UP),
-    music.PlaybackMode.IN_BACKGROUND)
-basic.show_leds("""
-    . . . . #
-    . . . # .
-    # . # . .
-    . # . . .
-    . . . . .
-    """)
+    music.PlaybackMode.UNTIL_DONE)
+basic.show_icon(IconNames.YES)
 basic.pause(2000)
+motorbit.motor_stop_all()
