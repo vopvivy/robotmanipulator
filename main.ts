@@ -258,10 +258,10 @@ music._playDefaultBackground(music.builtInPlayableMelody(Melodies.PowerUp), musi
 basic.pause(2000)
 basic.showIcon(IconNames.House)
 color_num = 0
-speed_LB = 100
-speed_LF = 100
-speed_RB = 100
-speed_RF = 100
+speed_LB = 75
+speed_LF = 75
+speed_RB = 75
+speed_RF = 75
 basic.pause(2000)
 basic.forever(function () {
     if (ble_val == "p") {
