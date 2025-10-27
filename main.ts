@@ -256,12 +256,12 @@ motorbit.MotorStopAll()
 basic.pause(2000)
 music._playDefaultBackground(music.builtInPlayableMelody(Melodies.PowerUp), music.PlaybackMode.UntilDone)
 basic.pause(2000)
-basic.showIcon(IconNames.House)
+basic.showIcon(IconNames.Happy)
 color_num = 0
-speed_LB = 75
-speed_LF = 75
-speed_RB = 75
-speed_RF = 75
+speed_LB = 150
+speed_LF = 150
+speed_RB = 150
+speed_RF = 150
 basic.pause(2000)
 basic.forever(function () {
     if (ble_val == "p") {
