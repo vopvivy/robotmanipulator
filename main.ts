@@ -6,8 +6,8 @@ function car_back () {
         . # # # .
         . . # . .
         `)
-    motorbit.MotorRunDual(motorbit.Motors.M1, -75, motorbit.Motors.M4, -75)
-    motorbit.MotorRunDual(motorbit.Motors.M2, -75, motorbit.Motors.M3, -75)
+    motorbit.MotorRunDual(motorbit.Motors.M1, -1 * speed_LB, motorbit.Motors.M4, -1 * speed_RB)
+    motorbit.MotorRunDual(motorbit.Motors.M2, -1 * speed_LB, motorbit.Motors.M3, -1 * speed_RB)
 }
 function car_move_RF () {
     basic.showLeds(`
@@ -219,8 +219,8 @@ function car_forward () {
         . . # . .
         . . # . .
         `)
-    motorbit.MotorRunDual(motorbit.Motors.M1, 75, motorbit.Motors.M4, 75)
-    motorbit.MotorRunDual(motorbit.Motors.M2, 75, motorbit.Motors.M3, 75)
+    motorbit.MotorRunDual(motorbit.Motors.M1, speed_LF, motorbit.Motors.M4, speed_RF)
+    motorbit.MotorRunDual(motorbit.Motors.M2, speed_LF, motorbit.Motors.M3, speed_RF)
 }
 function car_left_move () {
     basic.showLeds(`
@@ -258,10 +258,10 @@ music._playDefaultBackground(music.builtInPlayableMelody(Melodies.PowerUp), musi
 basic.pause(2000)
 basic.showIcon(IconNames.House)
 color_num = 0
-speed_LB = 75
-speed_LF = 75
-speed_RB = 75
-speed_RF = 75
+speed_LB = 100
+speed_LF = 100
+speed_RB = 100
+speed_RF = 100
 basic.pause(2000)
 basic.forever(function () {
     if (ble_val == "p") {
