@@ -6,8 +6,8 @@ function car_back () {
         . # # # .
         . . # . .
         `)
-    motorbit.MotorRunDual(motorbit.Motors.M1, -150, motorbit.Motors.M3, -150)
-    motorbit.MotorRunDual(motorbit.Motors.M2, -150, motorbit.Motors.M4, -150)
+    motorbit.MotorRunDual(motorbit.Motors.M1, -75, motorbit.Motors.M4, -75)
+    motorbit.MotorRunDual(motorbit.Motors.M2, -75, motorbit.Motors.M3, -75)
 }
 function car_move_RF () {
     basic.showLeds(`
@@ -17,8 +17,8 @@ function car_move_RF () {
         . # . . #
         # . . . .
         `)
-    motorbit.MotorRunDual(motorbit.Motors.M1, 150, motorbit.Motors.M3, 0)
-    motorbit.MotorRunDual(motorbit.Motors.M2, 0, motorbit.Motors.M4, 150)
+    motorbit.MotorRunDual(motorbit.Motors.M1, 75, motorbit.Motors.M4, 0)
+    motorbit.MotorRunDual(motorbit.Motors.M2, 0, motorbit.Motors.M3, 75)
 }
 function drift_left () {
     basic.showLeds(`
@@ -28,8 +28,8 @@ function drift_left () {
         . # . # .
         . . # . #
         `)
-    motorbit.MotorRunDual(motorbit.Motors.M1, 0, motorbit.Motors.M3, 0)
-    motorbit.MotorRunDual(motorbit.Motors.M2, 150, motorbit.Motors.M4, -150)
+    motorbit.MotorRunDual(motorbit.Motors.M1, 0, motorbit.Motors.M4, 0)
+    motorbit.MotorRunDual(motorbit.Motors.M2, 75, motorbit.Motors.M3, -75)
 }
 function car_left () {
     basic.showLeds(`
@@ -39,8 +39,8 @@ function car_left () {
         . # . . #
         . . . # .
         `)
-    motorbit.MotorRunDual(motorbit.Motors.M1, -150, motorbit.Motors.M3, 150)
-    motorbit.MotorRunDual(motorbit.Motors.M2, -150, motorbit.Motors.M4, 150)
+    motorbit.MotorRunDual(motorbit.Motors.M1, -75, motorbit.Motors.M4, 75)
+    motorbit.MotorRunDual(motorbit.Motors.M2, -75, motorbit.Motors.M3, 75)
 }
 bluetooth.onBluetoothConnected(function () {
     basic.showLeds(`
@@ -143,8 +143,8 @@ function car_move_LB () {
         # # . . .
         # # # # .
         `)
-    motorbit.MotorRunDual(motorbit.Motors.M1, 0, motorbit.Motors.M3, -150)
-    motorbit.MotorRunDual(motorbit.Motors.M2, -150, motorbit.Motors.M4, 0)
+    motorbit.MotorRunDual(motorbit.Motors.M1, 0, motorbit.Motors.M4, -75)
+    motorbit.MotorRunDual(motorbit.Motors.M2, -75, motorbit.Motors.M3, 0)
 }
 function showcolor () {
     basic.showIcon(IconNames.Chessboard)
@@ -157,8 +157,8 @@ function car_move_RB () {
         . . . # #
         . # # # #
         `)
-    motorbit.MotorRunDual(motorbit.Motors.M1, -150, motorbit.Motors.M3, 0)
-    motorbit.MotorRunDual(motorbit.Motors.M2, 0, motorbit.Motors.M4, -150)
+    motorbit.MotorRunDual(motorbit.Motors.M1, -75, motorbit.Motors.M4, 0)
+    motorbit.MotorRunDual(motorbit.Motors.M2, 0, motorbit.Motors.M3, -75)
 }
 function tracking () {
     basic.showIcon(IconNames.TShirt)
@@ -180,8 +180,8 @@ function car_right_move () {
         . . . # .
         . . # . .
         `)
-    motorbit.MotorRunDual(motorbit.Motors.M1, 150, motorbit.Motors.M3, -150)
-    motorbit.MotorRunDual(motorbit.Motors.M2, -150, motorbit.Motors.M4, 150)
+    motorbit.MotorRunDual(motorbit.Motors.M1, 75, motorbit.Motors.M4, -75)
+    motorbit.MotorRunDual(motorbit.Motors.M2, -75, motorbit.Motors.M3, 75)
 }
 function drift_right () {
     basic.showLeds(`
@@ -191,8 +191,8 @@ function drift_right () {
         . # . # .
         # . # . .
         `)
-    motorbit.MotorRunDual(motorbit.Motors.M1, 0, motorbit.Motors.M3, 0)
-    motorbit.MotorRunDual(motorbit.Motors.M2, -150, motorbit.Motors.M4, 150)
+    motorbit.MotorRunDual(motorbit.Motors.M1, 0, motorbit.Motors.M4, 0)
+    motorbit.MotorRunDual(motorbit.Motors.M2, -75, motorbit.Motors.M3, 75)
 }
 function follow () {
     basic.showIcon(IconNames.House)
@@ -205,8 +205,8 @@ function car_move_LF () {
         # . . # .
         . . . . #
         `)
-    motorbit.MotorRunDual(motorbit.Motors.M1, 0, motorbit.Motors.M3, 150)
-    motorbit.MotorRunDual(motorbit.Motors.M2, 150, motorbit.Motors.M4, 0)
+    motorbit.MotorRunDual(motorbit.Motors.M1, 0, motorbit.Motors.M4, 75)
+    motorbit.MotorRunDual(motorbit.Motors.M2, 75, motorbit.Motors.M3, 0)
 }
 function avoid () {
     basic.showIcon(IconNames.SmallHeart)
@@ -219,8 +219,8 @@ function car_forward () {
         . . # . .
         . . # . .
         `)
-    motorbit.MotorRunDual(motorbit.Motors.M1, 150, motorbit.Motors.M3, 150)
-    motorbit.MotorRunDual(motorbit.Motors.M2, 150, motorbit.Motors.M4, 150)
+    motorbit.MotorRunDual(motorbit.Motors.M1, 75, motorbit.Motors.M4, 75)
+    motorbit.MotorRunDual(motorbit.Motors.M2, 75, motorbit.Motors.M3, 75)
 }
 function car_left_move () {
     basic.showLeds(`
@@ -230,8 +230,8 @@ function car_left_move () {
         . # . . .
         . . # . .
         `)
-    motorbit.MotorRunDual(motorbit.Motors.M1, -150, motorbit.Motors.M3, 150)
-    motorbit.MotorRunDual(motorbit.Motors.M2, 150, motorbit.Motors.M4, -150)
+    motorbit.MotorRunDual(motorbit.Motors.M1, -75, motorbit.Motors.M4, 75)
+    motorbit.MotorRunDual(motorbit.Motors.M2, 75, motorbit.Motors.M3, -75)
 }
 function car_right () {
     basic.showLeds(`
@@ -241,8 +241,8 @@ function car_right () {
         # . . # .
         . # . . .
         `)
-    motorbit.MotorRunDual(motorbit.Motors.M1, 150, motorbit.Motors.M3, -150)
-    motorbit.MotorRunDual(motorbit.Motors.M2, 150, motorbit.Motors.M4, -150)
+    motorbit.MotorRunDual(motorbit.Motors.M1, 75, motorbit.Motors.M4, -75)
+    motorbit.MotorRunDual(motorbit.Motors.M2, 75, motorbit.Motors.M3, -75)
 }
 let ble_val = ""
 let connect_flag = 0
